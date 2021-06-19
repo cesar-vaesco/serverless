@@ -1,5 +1,29 @@
 
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+require('dotenv').config({ path: '.env' })
 
-module.exports = (req, res)=>{
-    res.send('Hola mundo..');
-}
+
+const colors = require('colors');
+
+
+const app = express();
+app.use(bodyParser.json());
+app.use(cors());
+
+
+
+console.log(process.env.MONGO_URI);
+
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('MongoDB conectado...'.green))
+    .catch(err => console.log('error:', err))
+
+
+app.get('*', (req, res) => {
+    res.send('Conectando nuestra app');
+})
+
+module.exports = app;
