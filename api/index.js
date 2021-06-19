@@ -8,6 +8,8 @@ require('dotenv').config({ path: '.env' })
 
 const colors = require('colors');
 
+const meals = require('./routes/meals');
+const orders = require('./routes/orders');
 
 const app = express();
 app.use(bodyParser.json());
@@ -19,8 +21,12 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
     .catch(err => console.log('error:', err))
 
 
-app.get('*', (req, res) => {
+
+app.use('/api/meals', meals);
+app.use('/api/orders', orders);
+
+/* app.get('*', (req, res) => {
     res.send('Conectando nuestra app');
-})
+}) */
 
 module.exports = app;
