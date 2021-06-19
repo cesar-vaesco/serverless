@@ -8,6 +8,11 @@
 - ejemplo inspect: https://vercel.com/**********/serverless/**************************************
 - ejemplo preview: https://serverless-h20vyzngq-cesar-vaesco.vercel.app/api/index
 
+#### Descargndo las variables de entorno que se encuntran almacenadas en Vercel
+
+- Se usa el comando  *** vercel env pull ***
+- Usar vercel para inicializar nuesra app en modo desarrollo  *** vercel dev ***
+
 | Librería | Sito web | Comando usado para el proyecto | Funcionalidad |
 |---|---|---|---|
 | express  | https://expressjs.com/es/  | npm install -S express@4.17.1  (instalando versión expecifica)| **** |

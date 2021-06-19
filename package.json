@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "build": "rm -rf public && mkdir public && echo 'Custom Build' > ./public/index.html",
+        "build": "del /s /q public echo 'Custom Build' > ./public/index.html",
         "start": "node api/index.js"
     },
     "dependencies": {
