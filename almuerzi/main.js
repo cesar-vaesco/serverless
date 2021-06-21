@@ -24,6 +24,12 @@ const renderItem = (item) => {
     return element;
 }
 
+const renderOrder = (order, meals) => {
+    const meal = meals.find(meal => meal._id === order.meal_id)
+    const element = stringToHtml(`<li data-id="${order._id}">${meal.name}  - ${order.user_id}</li> `)
+    return element;
+}
+
 window.onload = () => {
 
     const orderForm = document.getElementById('order');
@@ -39,16 +45,16 @@ window.onload = () => {
 
         const order = {
             meal_id: mealIdValue,
-            user_id: 'César Vargas',
+            user_id: 'Chicharo',
         }
-        fetch('http://localhost:3000/api/orders',{
+        fetch('http://localhost:3000/api/orders', {
             method: 'POST',
-            headers:{
+            headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(order)
         })
-        .then(x => console.log(x))
+            .then(x => console.log(x))
     }
 
     fetch('http://localhost:3000/api/meals')
@@ -63,6 +69,15 @@ window.onload = () => {
             // Crgndo en la vista los elementos(meals) que vinen de la base de datos
             listItems.forEach(element => mealsList.appendChild(element));
             submit.removeAttribute('disabled');
+            fetch('http://localhost:3000/api/orders')
+                .then(response => response.json())
+                .then(ordersData => {
+                    const ordersList = document.getElementById('orders-list')
+                    const listOrders = ordersData.map(orderData => renderOrder(orderData, data))
+                    ordersList.removeChild(ordersList.firstElementChild)
+                    listOrders.forEach(element => ordersList.appendChild(element))
+                    console.log(ordersData);
+                })
         })
 }
 
