@@ -16,6 +16,9 @@ const renderItem = (item) => {
         Array.from(mealsList.children).forEach( x => x.classList.remove('selected'));
         element.classList.add('selected');
         /* element.classList.remove('selected'); */
+
+        const mealIdInput = document.getElementById('meals-id');
+        mealIdInput.value = item._id
     })
 
     return element;
