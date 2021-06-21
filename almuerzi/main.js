@@ -4,11 +4,16 @@
 window.onload = () => {
     fetch('http://localhost:3000/api/meals')
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {
+            const mealsList = document.getElementById('meals-list');
+            const template = data.map(x => '<li>' + x.name + '</li>').join('')
+
+            mealsList.innerHTML = template
+        })
 }
 
 /*
-    Ejeplos de cabceras ue pueden acompañar a una petición fetch
+    Ejemplos de cabeceras ue pueden acompañar a una petición fetch
     fetch('http://localhost:3000/api/meals'),{
         method: 'GET',
         mode:"cors",
