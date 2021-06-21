@@ -42,3 +42,7 @@ form {
     cursor: pointer;
     background-color: #2dcf42;
 }
+
+#submit:disabled{
+    background-color: #ccc;
+}
