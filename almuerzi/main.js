@@ -1,6 +1,15 @@
+// Función que permite combertir texto en etiquetas html
+const stringToHtml = (string) =>{
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(string, 'text/html');
+    return doc.body.firstChild
+}
 
+//Función que permite renderizar las etiqutas html
 const renderItem = (item) => {
-    return `<li data-id=${item._id}>${item.name}</li>`
+    const element = stringToHtml(`<li data-id="${item._id}">${item.name}</li>`)
+    console.log(element);
+    return element;
 }
 
 window.onload = () => {
@@ -9,9 +18,9 @@ window.onload = () => {
         .then(data => {
             const mealsList = document.getElementById('meals-list');
             const submit = document.getElementById('submit');
-            const template = data.map(renderItem).join('')
-
-            mealsList.innerHTML = template
+            // Cargas las etiquetas HTML
+            const listItems= data.map(renderItem)
+            listItems.forEach(element => mealsList.appendChild(element));
             submit.removeAttribute('disabled');
         })
 }
