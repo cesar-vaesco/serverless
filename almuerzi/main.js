@@ -12,6 +12,8 @@ const renderItem = (item) => {
     element.addEventListener('click', () => {
         /* console.log(`Click en ${item.name}`);
         console.log(item); */
+        const mealsList = document.getElementById('meals-list');
+        Array.from(mealsList.children).forEach( x => x.classList.remove('selected'));
         element.classList.add('selected');
         /* element.classList.remove('selected'); */
     })
