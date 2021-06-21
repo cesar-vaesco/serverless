@@ -1,0 +1,27 @@
+GET http://localhost:3000/api/meals
+
+
+###
+GET http://localhost:3000/api/meals/60d0cb7ed3d2d13d94ec54a9 HTTP/1.1
+
+
+###
+POST http://localhost:3000/api/meals HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Papas fritas",
+    "desc": "Con queso amarillo"
+}
+
+###
+PUT http://localhost:3000/api/meals/60d0ca6dc6c709262407f611 HTTP/1.1
+content-type: application/json
+{
+    "name": "Papas fritas",
+    "desc": "Con queso amarillo"
+}
+
+
+###
+DELETE http://localhost:3000/api/meals/60d0cb7ed3d2d13d94ec54a9 HTTP/1.1
