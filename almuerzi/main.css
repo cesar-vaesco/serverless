@@ -43,6 +43,15 @@ form {
     background-color: #2dcf42;
 }
 
-#submit:disabled{
+#submit:disabled {
     background-color: #ccc;
+}
+
+#meals-list li {
+    cursor: pointer;
+}
+
+.selected {
+    background-color: #eee;
+    ;
 }
