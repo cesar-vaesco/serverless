@@ -1,5 +1,5 @@
 // Función que permite combertir texto en etiquetas html
-const stringToHtml = (string) =>{
+const stringToHtml = (string) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(string, 'text/html');
     return doc.body.firstChild
@@ -8,7 +8,14 @@ const stringToHtml = (string) =>{
 //Función que permite renderizar las etiqutas html
 const renderItem = (item) => {
     const element = stringToHtml(`<li data-id="${item._id}">${item.name}</li>`)
-    console.log(element);
+
+    element.addEventListener('click', () => {
+        /* console.log(`Click en ${item.name}`);
+        console.log(item); */
+        element.classList.add('selected');
+        /* element.classList.remove('selected'); */
+    })
+
     return element;
 }
 
@@ -19,9 +26,10 @@ window.onload = () => {
             const mealsList = document.getElementById('meals-list');
             const submit = document.getElementById('submit');
             // Cargas las etiquetas HTML
-            const listItems= data.map(renderItem)
+            const listItems = data.map(renderItem)
             // Removiendo el elemento parrafo que mostraba el mensae de cargndo
-            mealsList.removeChild(mealsList.firstElementChild)
+            mealsList.removeChild(mealsList.firstElementChild);
+            // Crgndo en la vista los elementos(meals) que vinen de la base de datos
             listItems.forEach(element => mealsList.appendChild(element));
             submit.removeAttribute('disabled');
         })
