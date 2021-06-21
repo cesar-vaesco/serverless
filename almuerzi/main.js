@@ -20,6 +20,8 @@ window.onload = () => {
             const submit = document.getElementById('submit');
             // Cargas las etiquetas HTML
             const listItems= data.map(renderItem)
+            // Removiendo el elemento parrafo que mostraba el mensae de cargndo
+            mealsList.removeChild(mealsList.firstElementChild)
             listItems.forEach(element => mealsList.appendChild(element));
             submit.removeAttribute('disabled');
         })
