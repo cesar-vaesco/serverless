@@ -27,20 +27,28 @@ const renderItem = (item) => {
 window.onload = () => {
 
     const orderForm = document.getElementById('order');
-    orderForm.onsubmit =(e) => {
+    orderForm.onsubmit = (e) => {
         e.preventDefault();
 
         const mealId = document.getElementById('meals-id');
         const mealIdValue = mealId.value;
-        if(!mealIdValue){
+        if (!mealIdValue) {
             alert('Debe seleccionar un plato')
             return
         }
 
-        const order ={
+        const order = {
             meal_id: mealIdValue,
-            user_id:'César',
+            user_id: 'César Vargas',
         }
+        fetch('http://localhost:3000/api/orders',{
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(order)
+        })
+        .then(x => console.log(x))
     }
 
     fetch('http://localhost:3000/api/meals')
