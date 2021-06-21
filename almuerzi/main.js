@@ -13,7 +13,7 @@ const renderItem = (item) => {
         /* console.log(`Click en ${item.name}`);
         console.log(item); */
         const mealsList = document.getElementById('meals-list');
-        Array.from(mealsList.children).forEach( x => x.classList.remove('selected'));
+        Array.from(mealsList.children).forEach(x => x.classList.remove('selected'));
         element.classList.add('selected');
         /* element.classList.remove('selected'); */
 
@@ -25,6 +25,24 @@ const renderItem = (item) => {
 }
 
 window.onload = () => {
+
+    const orderForm = document.getElementById('order');
+    orderForm.onsubmit =(e) => {
+        e.preventDefault();
+
+        const mealId = document.getElementById('meals-id');
+        const mealIdValue = mealId.value;
+        if(!mealIdValue){
+            alert('Debe seleccionar un plato')
+            return
+        }
+
+        const order ={
+            meal_id: mealIdValue,
+            user_id:'César',
+        }
+    }
+
     fetch('http://localhost:3000/api/meals')
         .then(response => response.json())
         .then(data => {
