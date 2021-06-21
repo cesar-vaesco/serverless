@@ -1,7 +1,7 @@
 const express = require('express');
 const Meals = require('../models/Meals');
 
-const router = require('express').Router();
+const router = express.Router();
 // const router = app.Router(); --> probar
 
 router.get('/', (req, res) => {
@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
     Meals.findByIdAndUpdate(req.params.id, req.body)
-
+    .then(() => res.sendStatus(204));
 });
 
 router.delete('/:id', (req, res) => {

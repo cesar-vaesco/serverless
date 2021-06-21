@@ -1,8 +1,10 @@
 const express = require('express');
 const Orders = require('../models/Orders');
 
-const router = require('express').Router();
-// const router = app.Router(); --> probar
+const router = express.Router();
+
+
+// http://localhost:3000/api/meals
 
 router.get('/', (req, res) => {
     Orders.find()
@@ -24,6 +26,7 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
     Orders.findByIdAndUpdate(req.params.id, req.body)
+        .then(() => res.sendStatus(204));
 
 });
 
