@@ -20,8 +20,8 @@ const isAuthenticated = (req, res, next) => {
     })
 }
 
-const hasRole = rol => (req, res, next) => {
-    if (req.user.role === role) {
+const hasRoles = roles => (req, res, next) => {
+    if (roles.indexOf(req.user.role) > -1) {
         return next()
     }
 
@@ -31,5 +31,5 @@ const hasRole = rol => (req, res, next) => {
 
 module.exports = {
     isAuthenticated,
-    hasRole
+    hasRoles
 }
