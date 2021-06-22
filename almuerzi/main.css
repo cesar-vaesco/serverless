@@ -30,10 +30,17 @@ form #order {
 }
 
 .form-title {
-    color: #ff6347;
-    margin-left: 5px;
-    font-size: 20px;
+    color: black;
+    margin-left: 25px;
+    font-size: 25px;
     font-weight: bold;
+}
+
+.form-main {
+    max-width: 500px;
+    margin: 0 auto !important;
+    margin-top: 100px !important;
+    height: 180px;
 }
 
 .input {
@@ -45,12 +52,11 @@ form #order {
     color: #eba0ac;
     font-size: 1em;
     font-style: italic;
-
-
 }
 
 .login-form {
-    margin-left: 5px;
+    margin-left: 25px;
+    margin-top: 40px;
     margin-bottom: 5px;
 }
 
