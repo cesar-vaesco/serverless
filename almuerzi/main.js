@@ -1,3 +1,5 @@
+let mealsList = [];
+
 // Función que permite combertir texto en etiquetas html
 const stringToHtml = (string) => {
     const parser = new DOMParser();
@@ -36,6 +38,8 @@ window.onload = () => {
     orderForm.onsubmit = (e) => {
         e.preventDefault();
 
+        const submit = document.getElementById('submit')
+        submit.setAttribute('disabled', true)
         const mealId = document.getElementById('meals-id');
         const mealIdValue = mealId.value;
         if (!mealIdValue) {
@@ -45,8 +49,9 @@ window.onload = () => {
 
         const order = {
             meal_id: mealIdValue,
-            user_id: 'Chicharo',
+            user_id: 'Aurelio',
         }
+
         fetch('http://localhost:3000/api/orders', {
             method: 'POST',
             headers: {
@@ -54,12 +59,19 @@ window.onload = () => {
             },
             body: JSON.stringify(order)
         })
-            .then(x => console.log(x))
+            .then(x => x.json(x))
+            .then(respuesta => {
+                const renderedOrder = renderOrder(respuesta, mealsState)
+                const ordersList = document.getElementById('orders-list')
+                ordersList.appendChild(renderedOrder)
+                submit.removeAttribute('disabled');
+            })
     }
 
     fetch('http://localhost:3000/api/meals')
         .then(response => response.json())
         .then(data => {
+            mealsState = data;
             const mealsList = document.getElementById('meals-list');
             const submit = document.getElementById('submit');
             // Cargas las etiquetas HTML
@@ -76,7 +88,7 @@ window.onload = () => {
                     const listOrders = ordersData.map(orderData => renderOrder(orderData, data))
                     ordersList.removeChild(ordersList.firstElementChild)
                     listOrders.forEach(element => ordersList.appendChild(element))
-                    console.log(ordersData);
+                    /* console.log(ordersData); */
                 })
         })
 }
