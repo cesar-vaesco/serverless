@@ -1,4 +1,6 @@
 let mealsList = [];
+let mealsState = [];
+let ruta = 'login'; //login , registrer, orders
 
 // Función que permite combertir texto en etiquetas html
 const stringToHtml = (string) => {
@@ -100,74 +102,11 @@ const inicializaDatos = () => {
 
 window.onload = () => {
 
-        inicializaFormulario()
-        inicializaDatos()
+        /* inicializaFormulario()
+        inicializaDatos() */
 
 }
 
-
-/* window.onload = () => {
-
-
-    const orderForm = document.getElementById('order');
-    orderForm.onsubmit = (e) => {
-        e.preventDefault();
-
-        const submit = document.getElementById('submit')
-        submit.setAttribute('disabled', true)
-        const mealId = document.getElementById('meals-id');
-        const mealIdValue = mealId.value;
-        if (!mealIdValue) {
-            alert('Debe seleccionar un plato')
-            return
-        }
-
-        const order = {
-            meal_id: mealIdValue,
-            user_id: 'Aurelio',
-        }
-
-        fetch('http://localhost:3000/api/orders', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(order)
-        })
-            .then(x => x.json(x))
-            .then(respuesta => {
-                const renderedOrder = renderOrder(respuesta, mealsState)
-                const ordersList = document.getElementById('orders-list')
-                ordersList.appendChild(renderedOrder)
-                submit.removeAttribute('disabled');
-            })
-    }
-
-    fetch('http://localhost:3000/api/meals')
-        .then(response => response.json())
-        .then(data => {
-            mealsState = data;
-            const mealsList = document.getElementById('meals-list');
-            const submit = document.getElementById('submit');
-            // Cargas las etiquetas HTML
-            const listItems = data.map(renderItem)
-            // Removiendo el elemento parrafo que mostraba el mensae de cargndo
-            mealsList.removeChild(mealsList.firstElementChild);
-            // Crgndo en la vista los elementos(meals) que vinen de la base de datos
-            listItems.forEach(element => mealsList.appendChild(element));
-            submit.removeAttribute('disabled');
-            fetch('http://localhost:3000/api/orders')
-                .then(response => response.json())
-                .then(ordersData => {
-                    const ordersList = document.getElementById('orders-list')
-                    const listOrders = ordersData.map(orderData => renderOrder(orderData, data))
-                    ordersList.removeChild(ordersList.firstElementChild)
-                    listOrders.forEach(element => ordersList.appendChild(element))
-                    console.log(ordersData);
-                })
-        })
-}
- */
 
 /*
 Ejemplos de cabeceras que pueden acompañar a una petición fetch

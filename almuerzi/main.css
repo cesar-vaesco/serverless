@@ -24,9 +24,34 @@ ul {
     list-style-type: none;
 }
 
-form {
+form #order {
     display: flex;
     justify-content: flex-end;
+}
+
+.form-title {
+    color: #ff6347;
+    margin-left: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.input {
+    border: 1px solid #ff6347;
+    height: 20px;
+}
+
+::placeholder {
+    color: #eba0ac;
+    font-size: 1em;
+    font-style: italic;
+
+
+}
+
+.login-form {
+    margin-left: 5px;
+    margin-bottom: 5px;
 }
 
 #submit {
@@ -57,7 +82,6 @@ form {
     ;
 }
 
-
-h3{
+h3 {
     margin: 15px;
 }

@@ -10,24 +10,32 @@
 </head>
 
 <body>
-    <div id="meals">
-        <h3>Menú del día</h3>
-        <ul id="meals-list">
-            <p>cargando...</p>
-        </ul>
-        <form id="order">
-            <input id="meals-id" type="hidden">
-            <input id="submit" type="submit" disabled>
+    <div class="form-main">
+        <p class="form-title">Login</p>
+        <form action="" class="login-form">
+            <input class="input" placeholder="nombre de usuario">
+            <input class="input" placeholder="contraseña">
+            <input type="submit" value="Enviar">
         </form>
     </div>
-    <div id="orders">
-        <h3>Ordenes realizadas</h3>
-        <ul id="orders-list">
-            <p>Cargando...</p>
-        </ul>
-    </div>
-
-
+    <template id="orders-view">
+        <div id="meals">
+            <h3>Menú del día</h3>
+            <ul id="meals-list">
+                <p>cargando...</p>
+            </ul>
+            <form id="order">
+                <input id="meals-id" type="hidden">
+                <input id="submit" type="submit" disabled>
+            </form>
+        </div>
+        <div id="orders">
+            <h3>Ordenes realizadas</h3>
+            <ul id="orders-list">
+                <p>Cargando...</p>
+            </ul>
+        </div>
+    </template>
 </body>
 <script src="main.js"></script>
 
