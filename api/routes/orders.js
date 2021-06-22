@@ -1,6 +1,6 @@
 const express = require('express');
 const Orders = require('../models/Orders');
-const { isAuthenticated, hasRoles } = require('../auth/index');
+const { isAuthenticated, hasRoles } = require('../auth');
 
 const router = express.Router();
 
@@ -26,7 +26,7 @@ router.post('/', isAuthenticated, (req, res) => {
 });
 
 
-router.put('/:id', isAuthenticated, hasRoles['admin', 'user'], (req, res) => {
+router.put('/:id', isAuthenticated, hasRoles(['admin', 'user']), (req, res) => {
     Orders.findByIdAndUpdate(req.params.id, req.body)
         .then(() => res.sendStatus(204));
 

@@ -13,7 +13,7 @@ const orders = require('./routes/orders');
 const auth = require('./routes/auth');
 
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(cors());
 
 
