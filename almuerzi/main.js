@@ -7,7 +7,7 @@ const stringToHtml = (string) => {
     return doc.body.firstChild
 }
 
-//Función que permite renderizar las etiqutas html
+//Función que permite renderizar las etiqutas html de lo splatillo
 const renderItem = (item) => {
     const element = stringToHtml(`<li data-id="${item._id}">${item.name}</li>`)
 
