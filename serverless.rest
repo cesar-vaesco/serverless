@@ -14,6 +14,9 @@ content-type: application/json
     "desc": "Con queso amarillo"
 }
 
+### Post orders
+POST http://localhost:3000/api/orders HTTP/1.1
+
 ###
 PUT http://localhost:3000/api/meals/60d0ca6dc6c709262407f611 HTTP/1.1
 content-type: application/json
