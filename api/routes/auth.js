@@ -1,6 +1,7 @@
 const express = require('express');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
+const { isAuthenticated } = require('../auth/index');
 
 const Users = require('../models/Users');
 
@@ -55,6 +56,9 @@ router.post('/login', (req, res) => {
         })
 });
 
+router.get('/me', isAuthenticated, (req, res) => {
+    res.send(req.user)
+});
 
 
 
