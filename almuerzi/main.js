@@ -1,6 +1,7 @@
 let mealsList = [];
 let mealsState = [];
 let ruta = 'login'; //login , registrer, orders
+let user = {};
 
 // Función que permite combertir texto en etiquetas html
 const stringToHtml = (string) => {
@@ -45,18 +46,22 @@ const inicializaFormulario = () => {
         const mealIdValue = mealId.value;
         if (!mealIdValue) {
             alert('Debe seleccionar un plato')
+            submit.removeAttribute('disabled');
             return
         }
 
         const order = {
             meal_id: mealIdValue,
-            user_id: 'Aurelio',
+            user_id: user._id,
         }
+
+        const token = localStorage.getItem('token')
 
         fetch('http://localhost:3000/api/orders', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                authorization: token,
             },
             body: JSON.stringify(order)
         })
@@ -102,6 +107,7 @@ const inicializaDatos = () => {
 const renderApp = () => {
     const token = localStorage.getItem('token');
     if (token) {
+        user = JSON.parse(localStorage.getItem('user'));
         return renderOrders();
     }
     renderLogin();
@@ -141,11 +147,27 @@ const renderLogin = () => {
                 alert('Sesion iniciada')
                 localStorage.setItem('token', respuesta.token)
                 ruta = 'orders'
+                /*     renderOrders() */
+                return respuesta.token
+            })
+            .then(token => {
+                return fetch('http://localhost:3000/api/auth/me', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        authorization: token,
+                    },
+                })
+            })
+            .then(x => x.json())
+            .then(fetchedUser => {
+                localStorage.setItem('user', JSON.stringify(fetchedUser))
+                user = fetchedUser
                 renderOrders()
             })
-            .catch(() => {
-                alert('Error al iniciar sesión');
-            })
+        /* .catch(() => {
+            alert('Error al iniciar sesión');
+        }) */
     }
 }
 
