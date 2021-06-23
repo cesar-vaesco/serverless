@@ -1,12 +1,15 @@
 body {
-    display: flex;
     background: #DAE8D9;
     background: -webkit-radial-gradient(center, #DAE8D9, #8F8BAE);
     background: -moz-radial-gradient(center, #DAE8D9, #8F8BAE);
     background: radial-gradient(ellipse at center, #DAE8D9, #8F8BAE);
 }
 
-body div {
+#app {
+    display: flex;
+}
+
+#app div {
     /* Ambos div ocupan el maximo de expacio dentro de la aplicación */
     flex-grow: 1;
     background-color: #fff;
@@ -40,7 +43,7 @@ form #order {
     font-weight: bold;
 }
 
-.form-main {
+#app .form-main {
     max-width: 400px;
     margin: 0 auto !important;
     margin-top: 100px !important;
@@ -103,9 +106,14 @@ input[type="submit" i] {
     margin-top: 40px;
 }
 
-#submit:hover {
+.btn:hover {
     cursor: pointer;
     background-color: #2dcf42;
+}
+
+.btn:active {
+    cursor: pointer;
+    background-color: #ff6347;
 }
 
 #submit:disabled {

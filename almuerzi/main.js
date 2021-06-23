@@ -97,10 +97,31 @@ const inicializaDatos = () => {
                     /* console.log(ordersData); */
                 })
         })
-
 }
 
-window.onload = () => {
+const renderApp = () => {
+    const token = localStorage.getItem('token');
+    if (token) {
+        return renderOrders();
+    }
+    renderLogin();
+    /* console.log('token:', token); */
+}
+
+const renderOrders = () => {
+    const orderView = document.getElementById('orders-view');
+    document.getElementById('app').innerHTML = orderView.innerHTML;
+    /* document.getElementsByTagName('body')[0].innerHTML = orderView.innerHTML; */
+    inicializaFormulario()
+    inicializaDatos()
+}
+
+const renderLogin = () => {
+
+    const loginTemplate = document.getElementById('login-template')
+
+    document.getElementById('app').innerHTML = loginTemplate.innerHTML;
+
 
     const loginForm = document.getElementById('login-form')
     loginForm.onsubmit = (e) => {
@@ -115,12 +136,25 @@ window.onload = () => {
             },
             /* body: JSON.stringify({ email: email, password: password }) */
             body: JSON.stringify({ email: email, password: password })
-        })
+        }).then(x => x.json()) // resibendo token de respuesta en formato json
+            .then(respuesta => {
+                alert('Sesion iniciada')
+                localStorage.setItem('token', respuesta.token)
+                ruta = 'orders'
+                renderOrders()
+            })
+            .catch(() => {
+                alert('Error al iniciar sesión');
+            })
     }
+}
+
+window.onload = () => {
+    renderApp()
 
 
-    /* inicializaFormulario()
-    inicializaDatos() */
+
+
 
 }
 
