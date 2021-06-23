@@ -27,19 +27,3 @@ content-type: application/json
 
 ###
 DELETE http://localhost:3000/api/meals/60d0cb7ed3d2d13d94ec54a9 HTTP/1.1
-
-
-### ruta de login
-POST http://localhost:3000/api/auth/login HTTP/1.1
-
-### ruta de registro
-POST http://localhost:3000/api/auth/register HTTP/1.1
-
-
-###
-POST http://localhost:3000/api/auth/register HTTP/1.1
-Content-Type: application/json
-{
-    "email": "cesar@cesar.com",
-    "password": "cesar"
-}

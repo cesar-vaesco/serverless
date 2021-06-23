@@ -102,16 +102,25 @@ const inicializaDatos = () => {
 
 window.onload = () => {
 
-    fetch('http://localhost:3000/api/auth/register', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: 'vero@correo.com', password: 'vero'})
-    })
+    const loginForm = document.getElementById('login-form')
+    loginForm.onsubmit = (e) => {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
 
-        /* inicializaFormulario()
-        inicializaDatos() */
+        fetch('http://localhost:3000/api/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            /* body: JSON.stringify({ email: email, password: password }) */
+            body: JSON.stringify({ email: email, password: password })
+        })
+    }
+
+
+    /* inicializaFormulario()
+    inicializaDatos() */
 
 }
 
