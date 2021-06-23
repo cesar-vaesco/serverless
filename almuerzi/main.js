@@ -102,6 +102,14 @@ const inicializaDatos = () => {
 
 window.onload = () => {
 
+    fetch('http://localhost:3000/api/auth/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: 'vero@correo.com', password: 'vero'})
+    })
+
         /* inicializaFormulario()
         inicializaDatos() */
 
