@@ -11,11 +11,19 @@
 
 <body>
     <div class="form-main">
-        <p class="form-title">Login</p>
+        <p class="form-title">Inicia sesión</p>
         <form action="" class="login-form">
-            <input class="input" placeholder="nombre de usuario">
-            <input class="input" placeholder="contraseña">
-            <input type="submit" value="Enviar">
+            <div>
+                <p>Nombre de usuario:</p>
+                <input class="input" placeholder="nombre de usuario">
+            </div>
+            <div>
+                <p>Contraseña:</p>
+                <input class="input" placeholder="contraseña">
+            </div>
+            <div>
+                <button class="btn">Enviar</button>
+            </div>
         </form>
     </div>
     <template id="orders-view">
@@ -26,7 +34,8 @@
             </ul>
             <form id="order">
                 <input id="meals-id" type="hidden">
-                <input id="submit" type="submit" disabled>
+                <button id="submit" disabled>Enviar</button>
+
             </form>
         </div>
         <div id="orders">
